@@ -3,6 +3,7 @@
     <div v-if="is_logged_in">
       <nav-bar/>
     </div>
+    <!-- <nav-bar/> -->
     <router-view/>
   </div>
 </template>
@@ -10,6 +11,14 @@
 <script>
 import { auth } from "@/firebaseConfig";
 import NavBar from '@/components/NavBar.vue'
+import Vue from 'vue'
+import { BootstrapVue } from 'bootstrap-vue'
+
+// Import Bootstrap and BootstrapVue CSS files (order is important)
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+Vue.use(BootstrapVue)
 
 export default {
   components:{
@@ -24,7 +33,6 @@ export default {
     }
   },
 
-  // Before Create: change prop then return to original....
   created: function() {
     var user = auth.currentUser;
     if(user){
@@ -40,18 +48,13 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-.center {
-position: absolute;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-border: 5px solid #5597b4;
-padding: 10px;
+  -webkit-transition: transform 200ms;
+  -webkit-transition: -webkit-transform 200ms;
+  transition: all 200ms;
+  /* text-align: center; */
+  /* color: #2c3e50; */
 }
 </style>

@@ -1,26 +1,27 @@
 <template>
   <div id="login">
     <div class="center">
-        <h1>Welcome To Todo List</h1>
-        <login-button/>
+        <welcome-dialog/>
+
       </div>
   </div>
 </template>
 
 <script>
 import { auth } from "@/firebaseConfig";
-import LoginButton from '../components/LoginButton.vue';
+import WelcomeDialog from '@/components/welcomeDialog.vue';
 
 export default {
   components: {
-    LoginButton
+    WelcomeDialog
+   
   },
   created: function() {
     auth.onAuthStateChanged(user => {
-      //  console.log("user state:", user);
+       console.log("user state:", user);
       // uncomment above to check out which user properties are available.
       if (user) {        
-        this.$router.replace('/todos')
+        this.$router.replace('/dashboard')
       } else {
         this.user = null;
         this.$$router.replace('/')
@@ -31,7 +32,7 @@ export default {
     auth.getRedirectResult().then(result=>{
       if (result.user) {
         console.log('result: ', result)
-        this.$router.push("/todos")
+        this.$router.push("/dashboard")
       }
     }).catch(() => {
       this.$router.push("/itsAllForNothing")
@@ -39,3 +40,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>

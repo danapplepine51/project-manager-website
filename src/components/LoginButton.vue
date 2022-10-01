@@ -2,17 +2,14 @@
   <div class="auth">
 
     <template v-if="!user">
-      <button class="btn btn-primary" @click="signInWithGoogle"> Sign in with Google </button>
+      <b-button variant="primary" @click="signInWithGoogle"> Sign in with Google </b-button>
     </template>
-    <template v-if="user">
+    <!-- <template v-if="user">
       
       <img class="avatar" :src="user.photoURL" alt="avatar" referrerpolicy="no-referrer">
-      <!-- google is real paranoid about hotlinking images I guess the referrerpolicy seems to fix it
-        https://stackoverflow.com/questions/40570117/http403-forbidden-error-when-trying-to-load-img-src-with-google-profile-pic -->
       <button @click="signOut">Sign Out</button>
-    </template>
+    </template> -->
 
-    <!-- <pre>{{ user }}</pre> -->
   </div>
 </template>
 
